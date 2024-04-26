@@ -18,6 +18,9 @@ interface ContactDao {
     @Query("DELETE FROM storage_items WHERE id = :contactId")
     suspend fun deleteContactItem(contactId: Int)
 
+    @Query("DELETE FROM storage_items")
+    suspend fun deleteAll()
+
     @Query("SELECT * FROM storage_items WHERE id = :contactId LIMIT 1")
     suspend fun getContactItem(contactId: Int): ContactDbModel
 

@@ -7,17 +7,24 @@ import com.example.shifthomeworks.domain.model.ContactItem
 import javax.inject.Inject
 import androidx.lifecycle.viewModelScope
 import com.example.shifthomeworks.domain.contactUseCase.AddContactItemUseCase
+import com.example.shifthomeworks.domain.contactUseCase.DeleteAllUseCase
 import kotlinx.coroutines.launch
 
 
 class ListContactsViewModel @Inject constructor(
     private val getContactListUseCase: GetContactListUseCase,
     private val deleteContactItemUseCase: DeleteContactItemUseCase ,
-    private val addContactItemUseCase: AddContactItemUseCase
+    private val addContactItemUseCase: AddContactItemUseCase,
+    private val deleteAllUseCase: DeleteAllUseCase
 ) : ViewModel() {
 
     val contactList = getContactListUseCase.getContactItemListUseCase()
 
+    fun deleteALl(){
+        viewModelScope.launch {
+            deleteAllUseCase.deleteAllUseCase()
+        }
+    }
 
     fun deleteContactList(contactItem: ContactItem) {
         viewModelScope.launch {

@@ -14,4 +14,6 @@ interface Repository {
     suspend fun getContactItem(id: Int): ContactItem
 
     fun getContactList(): LiveData<List<ContactItem>>
+
+    suspend fun deleteAll()
 }

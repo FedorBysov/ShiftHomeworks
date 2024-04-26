@@ -35,6 +35,9 @@ class AppImpl @Inject constructor(
             mapper.mapListDbModelToListEntityModel(dbList)
         }
 
+    override suspend fun deleteAll() {
+        contactDao.deleteAll()
+    }
 
 
 }
